@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodapp.viewmodels.MainViewModel
 import com.example.foodapp.R
 import com.example.foodapp.adapters.RecipesAdapter
+import com.example.foodapp.databinding.FragmentRecipesBinding
 import com.example.foodapp.util.NetworkResult
 import com.example.foodapp.util.observeOnce
 import com.example.foodapp.viewmodels.RecipesViewModel
@@ -23,7 +24,9 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
-    private lateinit var mView: View
+    private var _binding: FragmentRecipesBinding? = null
+    private val binding get() = _binding!!
+
     private val mAdapter by lazy { RecipesAdapter() }
     private lateinit var recyclerView: ShimmerRecyclerView
     private lateinit var mainViewModel: MainViewModel
@@ -40,14 +43,16 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        mView =  inflater.inflate(R.layout.fragment_recipes, container, false)
+        _binding =  FragmentRecipesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
 
-        recyclerView = mView.findViewById(R.id.recyclerview)
+        recyclerView = binding.recyclerview
         setupRecyclerView()
 
         readDatabase()
 
-        return mView
+        return binding.root
     }
 
     private fun setupRecyclerView() {
@@ -110,5 +115,10 @@ class RecipesFragment : Fragment() {
 
     private fun hideShimmerEffect() {
         recyclerView.hideShimmer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
