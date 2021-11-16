@@ -64,5 +64,13 @@
     <string name="apply">Apply</string>
     <!--End Region-->
 
+    <!-- Region Overview Fragment -->
+    <string name="title">Title</string>
+    <string name="checkmark">Checkmark</string>
+    <string name="dairy_free">Dairy Free</string>
+    <string name="healthy">Healthy</string>
+    <string name="cheap">Cheap</string>
+    <!-- End Region -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
