@@ -6,12 +6,16 @@
     <string name="favorite_recipes_fragment">Favorites</string>
     <string name="food_joke_fragment">Joke</string>
     <string name="search">Search</string>
+    <string name="save_to_favorites">Save to Favorites</string>
     <!--End Region -->
 
     <!--Region Details -->
     <string name="overview">Overview</string>
     <string name="ingredients">Ingredients</string>
     <string name="instructions">Instructions</string>
+    <string name="recipe_saved">Recipe saved.</string>
+    <string name="recipe_removed">Removed from Favorites.</string>
+    <string name="okay">Okay</string>
     <!--End Region -->
 
     <!--Region Fragment Recipes -->
