@@ -5,12 +5,15 @@
       <map>
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/drawable/gradient_overlay.xml" value="0.2703125" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/drawable/ic_delete.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/drawable/ic_error_placeholder.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/drawable/ic_menu_book.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/drawable/ic_star.xml" value="0.2703125" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/layout/activity_details.xml" value="0.109375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/layout/activity_main.xml" value="0.16614583333333333" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/layout/fragment_favorite_recipes.xml" value="0.16614583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/layout/favorite_recipes_row_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/layout/fragment_favorite_recipes.xml" value="0.264" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/layout/fragment_food_joke.xml" value="0.16614583333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/layout/fragment_ingredients.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/layout/fragment_instructions.xml" value="0.25025641025641027" />
@@ -24,6 +27,8 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/menu-v26/recipes_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16614583333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/menu/details_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/menu/favorite_recipes_menu.xml" value="0.11927083333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/menu/favorites_contextual_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FoodApp/app/src/main/res/menu/recipes_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
