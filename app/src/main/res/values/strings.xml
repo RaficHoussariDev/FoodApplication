@@ -7,6 +7,8 @@
     <string name="food_joke_fragment">Joke</string>
     <string name="search">Search</string>
     <string name="save_to_favorites">Save to Favorites</string>
+    <string name="delete_favorite_menu">Delete Favorite Menu</string>
+    <string name="delete_all">Delete All</string>
     <!--End Region -->
 
     <!--Region Details -->
@@ -82,6 +84,14 @@
     <string name="consistency">Consistency</string>
     <string name="original">Original</string>
     <!--End Region -->
+
+    <!-- Region Favorite Recipes -->
+    <string name="no_favorite_recipes">No Favorite Recipes.</string>
+    <string name="one_item_selected">1 item selected</string>
+    <string name="many_items_selected">%1s items selected</string>
+    <string name="recipes_removed">%1s Recipes Removed.</string>
+    <string name="all_recipes_removed">All recipes removed.</string>
+    <!-- End Region -->
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
