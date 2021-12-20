@@ -9,6 +9,7 @@
     <string name="save_to_favorites">Save to Favorites</string>
     <string name="delete_favorite_menu">Delete Favorite Menu</string>
     <string name="delete_all">Delete All</string>
+    <string name="share">Share</string>
     <!--End Region -->
 
     <!--Region Details -->
@@ -36,6 +37,7 @@
     <!-- End Region -->
 
     <!--Region Error Messages-->
+    <string name="error">Error</string>
     <string name="timeout">Timeout</string>
     <string name="api_key_limited">API Key Limited</string>
     <string name="recipes_not_found">Recipes Not Found</string>
@@ -93,5 +95,9 @@
     <string name="all_recipes_removed">All recipes removed.</string>
     <!-- End Region -->
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Region Food Joke Fragment -->
+    <string name="loading">Loading</string>
+    <string name="text_plain">text/plain</string>
+    <!-- End Region -->
+
 </resources>
