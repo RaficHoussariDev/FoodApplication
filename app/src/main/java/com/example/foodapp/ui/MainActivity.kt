@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_FoodApp)
         setContentView(R.layout.activity_main)
 
         val navController = Navigation.findNavController(this, R.id.navHostFragment)
