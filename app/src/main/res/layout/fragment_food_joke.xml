@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightGray"
+        android:background="@color/backgroundColor"
         tools:context=".ui.fragments.foodjoke.FoodJokeFragment">
 
         <com.google.android.material.card.MaterialCardView
@@ -30,12 +30,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/lightMediumGray"
+            app:strokeColor="@color/strokeColor"
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/backgroundColor">
 
                 <TextView
                     android:id="@+id/food_joke_textView"
@@ -45,7 +46,7 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/courgette"
                     android:text="@string/recipe_description"
-                    android:textColor="@color/dark"
+                    android:textColor="@color/titleColor"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
