@@ -6,25 +6,25 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
-import androidx.viewpager.widget.ViewPager
 import com.example.foodapp.R
 import com.example.foodapp.adapters.PagerAdapter
 import com.example.foodapp.data.database.entities.FavoritesEntity
+import com.example.foodapp.databinding.ActivityDetailsBinding
 import com.example.foodapp.ui.fragments.ingredients.IngredientsFragment
 import com.example.foodapp.ui.fragments.instructions.InstructionsFragment
 import com.example.foodapp.ui.fragments.overview.OverviewFragment
 import com.example.foodapp.viewmodels.MainViewModel
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Exception
 
 @AndroidEntryPoint
 class DetailsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDetailsBinding
 
     private val args by navArgs<DetailsActivityArgs>()
     private val mainViewModel: MainViewModel by viewModels()
@@ -34,10 +34,11 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
-        findViewById<Toolbar>(R.id.toolbar).setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        setSupportActionBar(binding.toolbar)
+        binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val fragments = ArrayList<Fragment>()
@@ -60,8 +61,8 @@ class DetailsActivity : AppCompatActivity() {
             supportFragmentManager
         )
 
-        findViewById<ViewPager>(R.id.viewPager).adapter = adapter
-        findViewById<TabLayout>(R.id.tabLayout).setupWithViewPager(findViewById(R.id.viewPager))
+        binding.viewPager.adapter = adapter
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -122,7 +123,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun showSnackBar(message: String) {
         Snackbar.make(
-            findViewById(R.id.detailsLayout),
+            binding.detailsLayout,
             message,
             Snackbar.LENGTH_SHORT
         ).setAction(application.getString(R.string.okay)){}

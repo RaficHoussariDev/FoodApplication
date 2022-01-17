@@ -8,16 +8,19 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.foodapp.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.foodapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setTheme(R.style.Theme_FoodApp)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         val navController = Navigation.findNavController(this, R.id.navHostFragment)
         val appBarConfiguration = AppBarConfiguration(
@@ -28,8 +31,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNavigationView.setupWithNavController(navController)
+        binding.bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 

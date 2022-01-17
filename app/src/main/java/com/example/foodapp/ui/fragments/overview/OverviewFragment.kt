@@ -5,91 +5,97 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import coil.load
 import com.example.foodapp.R
+import com.example.foodapp.databinding.FragmentOverviewBinding
 import com.example.foodapp.models.Result
 import com.example.foodapp.util.Constants.Companion.RECIPE_RESULT_KEY
 import org.jsoup.Jsoup
 
 class OverviewFragment : Fragment() {
 
+    private var _binding: FragmentOverviewBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_overview, container, false)
+        _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
         val args = arguments
         val myBundle: Result? = args?.getParcelable(RECIPE_RESULT_KEY)
 
-        view.findViewById<ImageView>(R.id.main_imageView).load(myBundle?.image)
-        view.findViewById<TextView>(R.id.title_textView).text = myBundle?.title
-        view.findViewById<TextView>(R.id.likes_textView).text = myBundle?.aggregateLikes.toString()
-        view.findViewById<TextView>(R.id.time_textView).text = myBundle?.readyInMinutes.toString()
-        view.findViewById<TextView>(R.id.summary_textView).text = myBundle?.summary
+        binding.mainImageView.load(myBundle?.image)
+        binding.titleTextView.text = myBundle?.title
+        binding.likesTextView.text = myBundle?.aggregateLikes.toString()
+        binding.timeTextView.text = myBundle?.readyInMinutes.toString()
         myBundle?.summary.let {
             val summary = Jsoup.parse(it).text()
-            view.findViewById<TextView>(R.id.summary_textView).text = summary
+            binding.summaryTextView.text = summary
         }
 
         if(myBundle?.vegetarian == true) {
-            view.findViewById<ImageView>(R.id.vegetarian_imageView).setColorFilter(
+            binding.vegetarianImageView.setColorFilter(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
-            view.findViewById<TextView>(R.id.vegetarian_textView).setTextColor(
+            binding.vegetarianTextView.setTextColor(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
         }
 
         if(myBundle?.vegan == true) {
-            view.findViewById<ImageView>(R.id.vegan_imageView).setColorFilter(
+            binding.veganImageView.setColorFilter(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
-            view.findViewById<TextView>(R.id.vegan_textView).setTextColor(
+            binding.veganTextView.setTextColor(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
         }
 
         if(myBundle?.glutenFree == true) {
-            view.findViewById<ImageView>(R.id.gluten_free_imageView).setColorFilter(
+            binding.glutenFreeImageView.setColorFilter(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
-            view.findViewById<TextView>(R.id.gluten_free_textView).setTextColor(
+            binding.glutenFreeTextView.setTextColor(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
         }
 
         if(myBundle?.dairyFree == true) {
-            view.findViewById<ImageView>(R.id.dairy_free_imageView).setColorFilter(
+            binding.dairyFreeImageView.setColorFilter(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
-            view.findViewById<TextView>(R.id.dairy_free_textView).setTextColor(
+            binding.dairyFreeTextView.setTextColor(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
         }
 
         if(myBundle?.veryHealthy == true) {
-            view.findViewById<ImageView>(R.id.healthy_imageView).setColorFilter(
+            binding.healthyImageView.setColorFilter(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
-            view.findViewById<TextView>(R.id.healthy_textView).setTextColor(
+            binding.healthyTextView.setTextColor(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
         }
 
         if(myBundle?.cheap == true) {
-            view.findViewById<ImageView>(R.id.cheap_imageView).setColorFilter(
+            binding.cheapImageView.setColorFilter(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
-            view.findViewById<TextView>(R.id.cheap_textView).setTextColor(
+            binding.cheapTextView.setTextColor(
                 ContextCompat.getColor(requireContext(), R.color.green)
             )
         }
 
-        return view
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
