@@ -59,6 +59,7 @@ class FavoriteRecipesAdapter(
         val currentRecipe = favoriteRecipes[position]
         val favoriteRecipesRowLayout = holder.itemView.findViewById<ConstraintLayout>(R.id.favoriteRecipesRowLayout)
         holder.bind(currentRecipe)
+        saveItemStateOnScroll(currentRecipe, holder)
 
         favoriteRecipesRowLayout.setOnClickListener {
             if(multiSelection) {
@@ -76,12 +77,9 @@ class FavoriteRecipesAdapter(
             if(!multiSelection) {
                 multiSelection = true
                 requireActivity.startActionMode(this)
-                applySelection(holder, currentRecipe)
-                true
-            } else {
-                multiSelection = false
-                false
             }
+            applySelection(holder, currentRecipe)
+            true
         }
     }
 
@@ -123,6 +121,14 @@ class FavoriteRecipesAdapter(
         applyStatusBarColor(R.color.statusBarColor)
     }
 
+    private fun saveItemStateOnScroll(currentRecipe: FavoritesEntity, holder: MyViewHolder) {
+        if(selectedRecipes.contains(currentRecipe)) {
+            changeRecipeStyle(holder, R.color.cardBackgroundLightColor, R.color.colorPrimary)
+        } else {
+            changeRecipeStyle(holder, R.color.cardBackgroundColor, R.color.strokeColor)
+        }
+    }
+
     private fun applySelection(holder: MyViewHolder, currentRecipe: FavoritesEntity) {
         if(selectedRecipes.contains(currentRecipe)) {
             selectedRecipes.remove(currentRecipe)
@@ -145,7 +151,10 @@ class FavoriteRecipesAdapter(
 
     private fun applyActionModeTitle() {
         when(selectedRecipes.size) {
-            0 -> mActionMode.finish()
+            0 -> {
+                mActionMode.finish()
+                multiSelection = false
+            }
             1 -> mActionMode.title = requireActivity.getString(R.string.one_item_selected)
             else -> mActionMode.title = requireActivity.getString(
                 R.string.many_items_selected,
