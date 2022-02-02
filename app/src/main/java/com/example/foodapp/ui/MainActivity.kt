@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         binding.bottomNavigationView.setupWithNavController(navController)
-        setSupportActionBar(binding.toolbar)
+        //setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
