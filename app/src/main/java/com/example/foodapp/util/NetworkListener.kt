@@ -13,18 +13,34 @@ class NetworkListener: ConnectivityManager.NetworkCallback() {
     fun checkNetworkAvailability(context: Context): MutableStateFlow<Boolean> {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        var isConnected = false
-
         connectivityManager.registerDefaultNetworkCallback(this)
-        connectivityManager.activeNetwork.let { network ->
-            val networkCapability = connectivityManager.getNetworkCapabilities(network)
-            if(networkCapability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true) {
-                isConnected = true
-            }
+
+        val network = connectivityManager.activeNetwork
+        if(network == null) {
+            isNetworkAvailable.value = false
+            return isNetworkAvailable
         }
 
-        isNetworkAvailable.value = isConnected
-        return isNetworkAvailable
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(network)
+        if(networkCapabilities == null) {
+            isNetworkAvailable.value = false
+            return isNetworkAvailable
+        }
+
+        return when {
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
+                isNetworkAvailable.value = true
+                isNetworkAvailable
+            }
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
+                isNetworkAvailable.value = true
+                isNetworkAvailable
+            }
+            else -> {
+                isNetworkAvailable.value = false
+                isNetworkAvailable
+            }
+        }
     }
 
     override fun onAvailable(network: Network) {
